@@ -22,7 +22,13 @@ function App() {
   return (
     <div className="App">
       <h1>Weather App</h1>
-      <input type="text" placeholder="Enter city name" value={city} onChange={(e) => setCity(e.target.value)} />
+      <input type="text" placeholder="Enter city name" value={city} onChange={(e) => setCity(e.target.value)}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          handleSearch();
+        }
+      }}
+      />
       <button onClick={handleSearch}>Get Weather</button>
       <div className="weather-info">
         {weatherData && (
