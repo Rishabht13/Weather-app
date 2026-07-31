@@ -7,6 +7,7 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const handleSearch = async () => {
     if (!city.trim()) {
@@ -15,7 +16,7 @@ function App() {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://api.weatherapi.com/v1/current.json?key=632a3c2560504418875173031262807&q=${city}`,
+        `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`,
       );
 
       setWeatherData(response.data);
