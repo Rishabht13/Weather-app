@@ -37,6 +37,7 @@ function App() {
             <p>Condition: {weatherData.current.condition.text}</p>
             <p>Humidity: {weatherData.current.humidity}%</p>
             <p>Wind Speed: {weatherData.current.wind_kph} kph</p>
+            <p>Last Updated: {weatherData.current.last_updated}</p>
             <img src={weatherData.current.condition.icon} alt={weatherData.current.condition.text} />
            
           </div>
