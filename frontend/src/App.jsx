@@ -15,7 +15,8 @@ function App() {
     const response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=632a3c2560504418875173031262807&q=${city}`)
     
     setWeatherData(response.data);
-    console.log(response.data);
+    setCity("");
+
   }
 
   return (
@@ -28,7 +29,23 @@ function App() {
         onChange={(e) => setCity(e.target.value)}
       />
       <button onClick={handleSearch}>Get Weather</button>
-      <pre> {JSON.stringify(weatherData, null, 2)}</pre>
+      <div className="weather-info">
+        {weatherData && (
+          <div>
+            <h2>{weatherData.location.name}, {weatherData.location.country}</h2>
+            <p>Temperature: {weatherData.current.temp_c}°C</p>
+            <p>Condition: {weatherData.current.condition.text}</p>
+            <p>Humidity: {weatherData.current.humidity}%</p>
+            <p>Wind Speed: {weatherData.current.wind_kph} kph</p>
+            <img src={weatherData.current.condition.icon} alt={weatherData.current.condition.text} />
+           
+          </div>
+        )}
+
+      </div>
+        
+
+
     </div>
   );
 }
