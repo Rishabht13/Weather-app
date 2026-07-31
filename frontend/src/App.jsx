@@ -17,20 +17,17 @@ function App() {
       const response = await axios.get(
         `http://api.weatherapi.com/v1/current.json?key=632a3c2560504418875173031262807&q=${city}`,
       );
-      
+
       setWeatherData(response.data);
       setError(null);
-
-
     } catch (error) {
       console.error("Error fetching weather data:", error);
       setWeatherData(null);
       setError("City not found");
-    }finally {
-    setLoading(false);
+    } finally {
+      setLoading(false);
     }
     setCity("");
-
   };
 
   return (
