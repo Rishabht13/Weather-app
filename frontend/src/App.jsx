@@ -25,7 +25,7 @@ function App() {
     } catch (error) {
       console.error("Error fetching weather data:", error);
       setWeatherData(null);
-      setError("Failed to fetch weather data");
+      setError("City not found");
     }finally {
     setLoading(false);
     }
@@ -47,7 +47,9 @@ function App() {
           }
         }}
       />
-      <button onClick={handleSearch}>Get Weather</button>
+      <button onClick={handleSearch} disabled={loading}>
+        {loading ? "Loading..." : "Get Weather"}
+      </button>
       <div className="weather-info">
         {error && <p className="error">{error}</p>}
         {weatherData && (
